@@ -1,0 +1,35 @@
+/* Style for the button */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Style for the list of todos */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Style for each todo item */
+  li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for the message when no todos are found */
+  p {
+    color: #888;
+  }
+  .overdue {
+    color: red; /* Example styling for overdue items */
+    font-weight: bold;
+  }
+  

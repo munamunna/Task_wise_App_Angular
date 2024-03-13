@@ -1,0 +1,17 @@
+<h2>All Due Date Todos</h2>
+
+<div *ngIf="dueTodos.length > 0">
+  <ul>
+    <li *ngFor="let todo of dueTodos">
+      <strong>Title:</strong> {{ todo.title }}<br>
+      <strong>Description:</strong> {{ todo.description }}<br>
+      <strong>Due Date:</strong> {{ todo.due_date }}<br>
+      <strong>Priority:</strong> {{ todo.priority }}<br>
+      <button>View</button>
+      <!-- Add any other properties you want to display -->
+    </li>
+  </ul>
+</div>
+<div *ngIf="dueTodos.length === 0">
+  <p>No due date todos found.</p>
+</div>

@@ -1,0 +1,23 @@
+<button (click)="openModal()">Add Tod</button>
+
+<button routerLink="/all-due-todos">All due date todo</button>
+
+<h1>hai</h1>
+
+<div *ngIf="todos.length > 0">
+  <ul>
+    <!-- Loop through todos and display them -->
+    <li *ngFor="let todo of todos" [ngClass]="{'overdue': isOverdue(todo)}">
+        <span>Title: {{ todo.title }}</span>
+        <span>Description: {{ todo.description }}</span>
+        <span>Due Date: {{ todo.due_date }}</span>
+        <span>Priority: {{ todo.priority }}</span>
+        
+
+        
+      </li>
+  </ul>
+</div>
+<div *ngIf="todos.length === 0">
+  <p>No todos found.</p>
+</div>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Modal Form
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">
+        Close
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+  <!-- Form to add new todo -->
+  <form (submit)="submitForm()">
+    <ion-item>
+      <ion-label>Title</ion-label>
+      <ion-input type="text" name="title" [(ngModel)]="formData.title" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea name="description" [(ngModel)]="formData.description" required></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Due Date</ion-label>
+      <ion-input type="date" name="due_date" [(ngModel)]="formData.due_date" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Priority</ion-label>
+      <ion-select name="priority" [(ngModel)]="formData.priority" required>
+        <ion-select-option value="LOW">Low</ion-select-option>
+        <ion-select-option value="MEDIUM">Medium</ion-select-option>
+        <ion-select-option value="HIGH">High</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button type="submit" expand="block">Submit</ion-button>
+  </form>
+

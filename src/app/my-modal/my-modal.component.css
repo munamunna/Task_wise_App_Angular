@@ -1,0 +1,32 @@
+/* my-modal.component.css */
+
+/* Center the content vertically and horizontally */
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Give some padding to the form */
+  form {
+    padding: 20px;
+    width: 100%;
+    max-width: 400px; /* Adjust this value as needed */
+  }
+  
+  /* Adjust styling for ion-item elements */
+  ion-item {
+    margin-bottom: 15px;
+  }
+  
+  /* Style the submit button */
+  ion-button[type="submit"] {
+    margin-top: 15px;
+  }
+  
+  /* Style the modal title */
+  ion-title {
+    font-weight: bold;
+  }
+  
