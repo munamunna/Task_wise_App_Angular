@@ -12,6 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { MyModalComponent } from './my-modal/my-modal.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { AllDueTodosComponent } from './all-due-todos/all-due-todos.component';
+import { DueTodoDetailComponent } from './due-todo-detail/due-todo-detail.component';
+import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { MyModal2Component } from './my-modal2/my-modal2.component';
+
 
 
 
@@ -23,6 +27,9 @@ import { AllDueTodosComponent } from './all-due-todos/all-due-todos.component';
     AddTodoModalComponent,
     MyModalComponent,
     AllDueTodosComponent,
+    DueTodoDetailComponent,
+    TodoDetailComponent,
+    MyModal2Component,
     
     
 

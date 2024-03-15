@@ -1,0 +1,15 @@
+<div *ngIf="overdueTodoDetails">
+    <h2>Overdue Todo Details</h2>
+    <div>
+      <strong>Title:</strong> {{ overdueTodoDetails.title }}<br>
+      <strong>Description:</strong> {{ overdueTodoDetails.description }}<br>
+      <strong>Due Date:</strong> {{ overdueTodoDetails.due_date | date: 'medium' }}<br>
+      <strong>Priority:</strong> {{ overdueTodoDetails.priority }}<br>
+      <!-- Add any other properties you want to display -->
+    </div>
+  </div>
+  
+  <div *ngIf="!overdueTodoDetails">
+    <p>No overdue todo details found.</p>
+  </div>
+  

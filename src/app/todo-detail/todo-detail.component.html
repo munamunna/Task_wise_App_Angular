@@ -1,0 +1,12 @@
+<div *ngIf="tododetail">
+    <h2>Todo Detail</h2>
+    <p>Title: {{ tododetail.title }}</p>
+    <p>Description: {{ tododetail.description }}</p>
+    <p>Due Date: {{ tododetail.due_date }}</p>
+    <p>Priority: {{ tododetail.priority }}</p>
+    <!-- Add other details as needed -->
+  </div>
+  <div *ngIf="!tododetail">
+    <p>Loading todo detail...</p>
+  </div>
+  

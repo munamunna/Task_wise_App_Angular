@@ -54,8 +54,36 @@ export class TodoService {
 
   
 
+  getOverdueTodoDetail(todoItemId: number): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    });
+
+    return this.http.get(`http://127.0.0.1:8000/todo_list/todos/overdue/${todoItemId}/`, { headers: headers });
+  }
+
+  getTodoDetail(todoItemId: number): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    });
+
+    return this.http.get(`http://127.0.0.1:8000/todo_list/todos/${todoItemId}/`, { headers: headers });
+  }
+
   updateDueDate(todoItemId: number, newDueDate: string): Observable<any> {
-    const url = "http://127.0.0.1:8000/todo_list/todos/${todoItemId}/update_due_date/"; // Modify the URL as per your Django endpoint
-    return this.http.put(url, { new_due_date: newDueDate });
+
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    });
+
+    const url = `http://127.0.0.1:8000/todo_list/todos/${todoItemId}/update_due_date/`;
+     // Modify the URL as per your Django endpoint
+    return this.http.put(url, { new_due_date: newDueDate },{ headers: headers });
   }
 }

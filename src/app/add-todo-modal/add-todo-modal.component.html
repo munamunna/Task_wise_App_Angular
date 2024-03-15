@@ -1,8 +1,12 @@
 <button (click)="openModal()">Add Tod</button>
 
-<button routerLink="/all-due-todos">All due date todo</button>
+
 
 <h1>hai</h1>
+
+
+
+
 
 <div *ngIf="todos.length > 0">
   <ul>
@@ -12,6 +16,17 @@
         <span>Description: {{ todo.description }}</span>
         <span>Due Date: {{ todo.due_date }}</span>
         <span>Priority: {{ todo.priority }}</span>
+        <button *ngIf="todo.id" (click)="gettTodoDetail(todo.id)">View Detail</button>
+        <div *ngIf="selectedTodoId === todo.id">
+            <p>Selected Todo Detail:</p>
+            <p>Title: {{ tododetail.title }}</p>
+            <p>Description: {{ tododetail.description }}</p>
+            <p>Due Date: {{ tododetail.due_date }}</p>
+            <p>Priority: {{ tododetail.priority }}</p>
+            <button *ngIf="todo.id && isOverdue(todo)" (click)="openModal2()">schedule</button>
+
+          </div>
+        
         
 
         
