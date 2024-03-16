@@ -15,6 +15,8 @@ import { AllDueTodosComponent } from './all-due-todos/all-due-todos.component';
 import { DueTodoDetailComponent } from './due-todo-detail/due-todo-detail.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { MyModal2Component } from './my-modal2/my-modal2.component';
+import { MyModal3Component } from './my-modal3/my-modal3.component';
+import { Mymodal4Component } from './mymodal4/mymodal4.component';
 
 
 
@@ -30,6 +32,8 @@ import { MyModal2Component } from './my-modal2/my-modal2.component';
     DueTodoDetailComponent,
     TodoDetailComponent,
     MyModal2Component,
+    MyModal3Component,
+    Mymodal4Component,
     
     
 

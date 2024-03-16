@@ -17,8 +17,13 @@
         <ion-label>New Due Date:</ion-label>
         <ion-input name="due_date" type="date" [(ngModel)]="newDueDate"></ion-input>
       </ion-item>
+
+      <ion-item>
+        <ion-label>New:</ion-label>
+        <ion-input>{{selecteddTodoId}}</ion-input>
+      </ion-item>
     </ion-list>
     
-    <ion-button (click)="updateTodo()">Reschedule</ion-button>
+    <ion-button (click)="reschedule()">Reschedule</ion-button>
   </ion-content>
   

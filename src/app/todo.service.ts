@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -39,22 +40,23 @@ export class TodoService {
     });
     return this.http.get("http://127.0.0.1:8000/todo_list/todos/",{"headers":headers});
   }
-  getOverdueTodos(){
+ 
+
+  getOverdueTodos() {
     const token = localStorage.getItem('authToken');
-    let headers=new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Token ${token}`
-      
-
     });
-    return this.http.get("http://127.0.0.1:8000/todo_list/todos/overdue/",{"headers":headers});
-
-    
+  
+    return this.http.get("http://127.0.0.1:8000/todo_list/todos/overdue/", { headers }).pipe(
+      
+    );
   }
-
+  
   
 
-  getOverdueTodoDetail(todoItemId: number): Observable<any> {
+  getOverdueTodoDetail(todoItemId: number) {
     const token = localStorage.getItem('authToken');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -86,4 +88,32 @@ export class TodoService {
      // Modify the URL as per your Django endpoint
     return this.http.put(url, { new_due_date: newDueDate },{ headers: headers });
   }
+
+
+  updateTodo(todoItem: any): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    });
+  
+    const url = `http://127.0.0.1:8000/todo_list/todos/${todoItem.id}/`; // Assuming your endpoint follows this pattern
+    return this.http.put(url, todoItem, { headers: headers }); // Pass todoItem as the second argument to send updated data
+  }
+  
+
+
+  deleteTodo(todoItemId: number): Observable<any> {
+
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    });
+
+    const url = `http://127.0.0.1:8000/todo_list/todos/${todoItemId}/`;
+     // Modify the URL as per your Django endpoint
+    return this.http.delete(url,{ headers: headers });
+  }
 }
+

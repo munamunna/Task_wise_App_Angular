@@ -17,13 +17,16 @@
         <span>Due Date: {{ todo.due_date }}</span>
         <span>Priority: {{ todo.priority }}</span>
         <button *ngIf="todo.id" (click)="gettTodoDetail(todo.id)">View Detail</button>
+        <button *ngIf="todo.id" (click)="openModal3(todo)">update</button>
+        <button *ngIf="todo.id" (click)="openModal4(todo)">Delete</button>
         <div *ngIf="selectedTodoId === todo.id">
             <p>Selected Todo Detail:</p>
-            <p>Title: {{ tododetail.title }}</p>
-            <p>Description: {{ tododetail.description }}</p>
-            <p>Due Date: {{ tododetail.due_date }}</p>
-            <p>Priority: {{ tododetail.priority }}</p>
-            <button *ngIf="todo.id && isOverdue(todo)" (click)="openModal2()">schedule</button>
+            <p>Title: {{ todo.title }}</p>
+            <p>Description: {{ todo.description }}</p>
+            <p>Due Date: {{ todo.due_date }}</p>
+            <p>Priority: {{ todo.priority }}</p>
+            <button *ngIf="todo.id && isOverdue(todo)" (click)="openModal2(todo.id)">schedule</button>
+            
 
           </div>
         

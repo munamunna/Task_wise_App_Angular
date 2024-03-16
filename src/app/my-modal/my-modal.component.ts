@@ -46,19 +46,6 @@ export class MyModalComponent implements OnInit {
     // Save form data to local storage
     await this.storage.set('formData', this.formData);
     console.log("stored");
-
-    // Get the token from local storage
-    const token = localStorage.getItem('authToken');
-    
-    
-
-    // Prepare headers with Authorization token
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Token ${token}`
-    });
-    console.log('Token:', token);
-
     // Send form data to backend using TodoService
     try {
       // Retrieve form data from local storage
@@ -79,6 +66,14 @@ export class MyModalComponent implements OnInit {
       // Handle error if necessary
     }
   }
+
+    
+    
+    
+
+    
+
+    
 
  
   

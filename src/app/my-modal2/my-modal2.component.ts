@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
 import { TodoService } from '../todo.service';
+import { any } from 'cypress/types/bluebird';
 
 @Component({
   selector: 'app-my-modal2',
@@ -8,8 +9,10 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./my-modal2.component.css'],
 })
 export class MyModal2Component {
-   tododetail: any;
+  selecteddTodoId: number | null = null;
    newDueDate: string = '';
+  
+   
 
   constructor(
     private modalController: ModalController,
@@ -20,27 +23,29 @@ export class MyModal2Component {
   closeModal() {
     this.modalController.dismiss();
   }
-
-  async updateTodo() {
-    try {
-      // Call the updateDueDate method in TodoService to update the due date
-      await this.todoService.updateDueDate(this.tododetail.id, this.newDueDate).toPromise();
-      // Display a success message
-      this.presentToast('Todo updated successfully');
-      // Close the modal
-      this.closeModal();
-    } catch (error) {
-      // Display an error message if update fails
-      console.error('Error updating todo:', error);
-      this.presentToast('Error updating todo');
+  reschedule() {
+    if (!this.selecteddTodoId) {
+      console.error('No todo selected');
+      return;
     }
+    if (!this.newDueDate) {
+      console.error('No new due date provided');
+      return;
+    }
+    
+    // Call the service function to update the due date
+    this.todoService.updateDueDate(this.selecteddTodoId, this.newDueDate)
+      .subscribe(
+        () => {
+          console.log('Due date updated successfully');
+          // Optionally, you can close the modal after successful update
+          this.closeModal();
+        },
+        error => {
+          console.error('Error updating due date:', error);
+          // Handle error appropriately, e.g., show an error message
+        }
+      );
   }
-
-  async presentToast(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 2000
-    });
-    toast.present();
-  }
+ 
 }

@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Todo Details</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label>ID:</ion-label>
+        <ion-label>{{ todoitem.id }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Title:</ion-label>
+        <ion-input [(ngModel)]="todoitem.title" placeholder="Enter title" clearInput></ion-input>
+      </ion-item>
+      <!-- Add more details as needed -->
+    </ion-list>
+    <ion-button (click)="delete()">Delete Todo Det</ion-button>
+  </ion-content>
+  
