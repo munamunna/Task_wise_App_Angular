@@ -9,13 +9,23 @@
   
   <ion-content>
     <ion-list>
-      <ion-item>
-        <ion-label>ID:</ion-label>
-        <ion-label>{{ tododet.id }}</ion-label>
-      </ion-item>
+      
       <ion-item>
         <ion-label>Title:</ion-label>
         <ion-input name="title" [(ngModel)]="tododet.title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea name="description" [(ngModel)]="tododet.description" required></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Priority</ion-label>
+        <ion-select name="priority" [(ngModel)]="tododet.priority" required>
+          <ion-select-option value="LOW">Low</ion-select-option>
+          <ion-select-option value="MEDIUM">Medium</ion-select-option>
+          <ion-select-option value="HIGH">High</ion-select-option>
+        </ion-select>
       </ion-item>
       <!-- Add more details as needed -->
     </ion-list>

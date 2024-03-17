@@ -7,6 +7,11 @@ import { Mymodal4Component } from '../mymodal4/mymodal4.component';
 import { TodoService } from '../todo.service';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Todo } from './todo';
+
+
+
+
 
 
 @Component({
@@ -15,19 +20,29 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./add-todo-modal.component.css']
 })
 export class AddTodoModalComponent {
-  todos: any;
+ 
+
   tododetail: any;
   tododet:any
   selectedTodoId: number | null = null;
   overdueItems: any;
   todoitem:any;
   selecteddTodoId: number | null = null;
+  todos: any;
+
+  
 
   
   
   constructor(private modalController: ModalController, private service: TodoService, private router: Router, private toastController: ToastController) {
     this.service.getTodos().subscribe(res => this.todos = res);
     this.getOverdueItems();
+  }
+  getSortedTodos(sortBy: string): void {
+    this.service.getsTodos(sortBy)
+      .subscribe((res) => {
+        this.todos = res;
+      });
   }
   
   gettTodoDetail(todoItemId: number) {
@@ -120,5 +135,13 @@ async openModal4(todoitem:any) {
     }
   });
   return await modal.present();
+}
+getTodoClasses(todo: any): any {
+  return {
+    'overdue': this.isOverdue(todo),
+    'high-priority': todo.priority === 'HIGH',
+    'medium-priority': todo.priority === 'MEDIUM',
+    'low-priority': todo.priority === 'LOW'
+  };
 }
 }

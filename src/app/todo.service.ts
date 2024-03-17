@@ -1,14 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
+import {HttpParams} from '@angular/common/http';
+
+
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoService {
+export class TodoService implements OnInit {
+ 
+  
   async ngOnInit() {
+    
     await this.storage.create(); // Ensure storage is initialized
   }
 
@@ -30,6 +36,8 @@ export class TodoService {
   }
 
 
+  private apiUrl = 'http://127.0.0.1:8000/todo_list/todos/';
+
   getTodos() {
     const token = localStorage.getItem('authToken');
     let headers=new HttpHeaders({
@@ -39,6 +47,21 @@ export class TodoService {
 
     });
     return this.http.get("http://127.0.0.1:8000/todo_list/todos/",{"headers":headers});
+  }
+
+  getsTodos(sortBy: string) {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    });
+
+    let params = new HttpParams();
+    if (sortBy) {
+      params = params.set('sort_by', sortBy);
+    }
+
+    return this.http.get(this.apiUrl, { headers: headers, params: params });
   }
  
 

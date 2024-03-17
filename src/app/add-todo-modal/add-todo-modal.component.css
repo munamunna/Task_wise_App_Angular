@@ -29,7 +29,39 @@ button {
     color: #888;
   }
   .overdue {
-    color: red; /* Example styling for overdue items */
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text color */
+    border: 1px solid #f5c6cb; /* Dark red border */
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
     font-weight: bold;
+    animation: blink-animation 5s infinite alternate; /* Slow blink animation */
   }
+  
+  @keyframes blink-animation {
+    0% {
+      opacity: 1; /* Fully visible */
+    }
+    100% {
+      opacity: 0.3; /* Fully transparent */
+    }
+  }
+  
+  
+  
+  
+  .high-priority {
+    background-color: red;
+  }
+  
+  .medium-priority {
+    background-color: yellow;
+  }
+  
+  .low-priority {
+    background-color: green;
+  }
+  
+
   

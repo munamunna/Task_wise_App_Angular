@@ -1,22 +1,18 @@
-<button (click)="openModal()">Add Tod</button>
-
-
-
-<h1>hai</h1>
-
-
-
-
-
+<button  (click)="openModal()">Add Todos</button>
+<button (click)="getSortedTodos('priority')">Sort by Priority</button>
 <div *ngIf="todos.length > 0">
   <ul>
     <!-- Loop through todos and display them -->
-    <li *ngFor="let todo of todos" [ngClass]="{'overdue': isOverdue(todo)}">
+    <li *ngFor="let todo of todos" [ngClass]="getTodoClasses(todo)">
+
+
+
         <span>Title: {{ todo.title }}</span>
         <span>Description: {{ todo.description }}</span>
         <span>Due Date: {{ todo.due_date }}</span>
         <span>Priority: {{ todo.priority }}</span>
-        <button *ngIf="todo.id" (click)="gettTodoDetail(todo.id)">View Detail</button>
+        <br>
+        <button *ngIf="todo.id" (click)="gettTodoDetail(todo.id)" class="me-2">View Detail</button>
         <button *ngIf="todo.id" (click)="openModal3(todo)">update</button>
         <button *ngIf="todo.id" (click)="openModal4(todo)">Delete</button>
         <div *ngIf="selectedTodoId === todo.id">
@@ -26,16 +22,12 @@
             <p>Due Date: {{ todo.due_date }}</p>
             <p>Priority: {{ todo.priority }}</p>
             <button *ngIf="todo.id && isOverdue(todo)" (click)="openModal2(todo.id)">schedule</button>
-            
-
           </div>
-        
-        
-
-        
       </li>
   </ul>
 </div>
 <div *ngIf="todos.length === 0">
   <p>No todos found.</p>
 </div>
+
+
