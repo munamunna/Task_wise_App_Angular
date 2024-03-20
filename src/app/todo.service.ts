@@ -32,11 +32,11 @@ export class TodoService implements OnInit {
       'Authorization': `Token ${token}`
     });
 
-    return this.http.post("http://127.0.0.1:8000/todo_list/todos/", formData, {headers});
+    return this.http.post("https://munamariyam.pythonanywhere.com/todo_list/todos/", formData, {headers});
   }
 
 
-  private apiUrl = 'http://127.0.0.1:8000/todo_list/todos/';
+  private apiUrl = 'https://munamariyam.pythonanywhere.com/todo_list/todos/';
 
   getTodos() {
     const token = localStorage.getItem('authToken');
@@ -46,7 +46,7 @@ export class TodoService implements OnInit {
       
 
     });
-    return this.http.get("http://127.0.0.1:8000/todo_list/todos/",{"headers":headers});
+    return this.http.get("https://munamariyam.pythonanywhere.com/todo_list/todos/",{"headers":headers});
   }
 
   getsTodos(sortBy: string) {
@@ -72,7 +72,7 @@ export class TodoService implements OnInit {
       'Authorization': `Token ${token}`
     });
   
-    return this.http.get("http://127.0.0.1:8000/todo_list/todos/overdue/", { headers }).pipe(
+    return this.http.get("https://munamariyam.pythonanywhere.com/todo_list/todos/overdue/", { headers }).pipe(
       
     );
   }
@@ -86,7 +86,7 @@ export class TodoService implements OnInit {
       'Authorization': `Token ${token}`
     });
 
-    return this.http.get(`http://127.0.0.1:8000/todo_list/todos/overdue/${todoItemId}/`, { headers: headers });
+    return this.http.get(`https://munamariyam.pythonanywhere.com/todo_list/todos/overdue/${todoItemId}/`, { headers: headers });
   }
 
   getTodoDetail(todoItemId: number): Observable<any> {
@@ -96,7 +96,7 @@ export class TodoService implements OnInit {
       'Authorization': `Token ${token}`
     });
 
-    return this.http.get(`http://127.0.0.1:8000/todo_list/todos/${todoItemId}/`, { headers: headers });
+    return this.http.get(`https://munamariyam.pythonanywhere.com/todo_list/todos/${todoItemId}/`, { headers: headers });
   }
 
   updateDueDate(todoItemId: number, newDueDate: string): Observable<any> {
@@ -107,7 +107,7 @@ export class TodoService implements OnInit {
       'Authorization': `Token ${token}`
     });
 
-    const url = `http://127.0.0.1:8000/todo_list/todos/${todoItemId}/update_due_date/`;
+    const url = `https://munamariyam.pythonanywhere.com/todo_list/todos/${todoItemId}/update_due_date/`;
      // Modify the URL as per your Django endpoint
     return this.http.put(url, { new_due_date: newDueDate },{ headers: headers });
   }
@@ -120,7 +120,7 @@ export class TodoService implements OnInit {
       'Authorization': `Token ${token}`
     });
   
-    const url = `http://127.0.0.1:8000/todo_list/todos/${todoItem.id}/`; // Assuming your endpoint follows this pattern
+    const url = `https://munamariyam.pythonanywhere.com/todo_list/todos/${todoItem.id}/`; // Assuming your endpoint follows this pattern
     return this.http.put(url, todoItem, { headers: headers }); // Pass todoItem as the second argument to send updated data
   }
   
@@ -134,7 +134,7 @@ export class TodoService implements OnInit {
       'Authorization': `Token ${token}`
     });
 
-    const url = `http://127.0.0.1:8000/todo_list/todos/${todoItemId}/`;
+    const url = `https://munamariyam.pythonanywhere.com/todo_list/todos/${todoItemId}/`;
      // Modify the URL as per your Django endpoint
     return this.http.delete(url,{ headers: headers });
   }

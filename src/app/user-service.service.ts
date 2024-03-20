@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 export class UserServiceService {
   constructor(private http:HttpClient) { }
   CreateUser(data:any){
-    return this.http.post("http://127.0.0.1:8000/user_authentication/users/",data)
+    return this.http.post("https://munamariyam.pythonanywhere.com/user_authentication/users/",data)
   }
   login(userData:any){
-    return this.http.post("http://127.0.0.1:8000/user_authentication/login/",userData)
+    return this.http.post("https://munamariyam.pythonanywhere.com/user_authentication/login/",userData)
   }
 }

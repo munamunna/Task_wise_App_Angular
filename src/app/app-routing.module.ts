@@ -9,7 +9,7 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 
 const routes: Routes = [
  
-  {path:"register",component:UserAuthenticationComponent},
+  {path:"",component:UserAuthenticationComponent},
   {path:"todos",component:TodoListComponent},
   {path:"addtodos",component:AddTodoModalComponent},
   {path:"all-due-todos",component:AllDueTodosComponent},
